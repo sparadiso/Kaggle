@@ -1,4 +1,7 @@
-from ../lib.include import *
+import sys
+sys.path.append("../")
+
+from lib.include import *
 from sklearn.ensemble import RandomForestClassifier
 
 # Load the training data 
