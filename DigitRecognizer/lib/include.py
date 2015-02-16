@@ -12,14 +12,14 @@ from sklearn.pipeline import Pipeline
 from sklearn.grid_search import GridSearchCV
 
 # Load data into Pandas dataframe
-def TrainData():
-    fname = "../data/train.csv"
+def TrainData(data_dir):
+    fname = "{}/train.csv".format(data_dir)
     data = pd.read_csv(fname, delimiter=',')
     data.columns = ['y'] + range(784)
     return np.array(data[range(784)]), np.array(data['y'])
 
-def TestData():
-    fname = "/home/sean/Dropbox/DataScience/Kaggle/DigitRecognizer/data/test.csv"
+def TestData(data_dir):
+    fname = "{}/test.csv".format(data_dir)
     data = pd.read_csv(fname, delimiter=',')
     data.columns = range(784)
     return pd.DataFrame(data)

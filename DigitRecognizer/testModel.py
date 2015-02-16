@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 # A dump of included packages and a few helper functions
-from include import *
+from lib.include import *
 import sys
 
 # Pull the pickled model filename (an sklearn Estimator)
@@ -12,7 +12,7 @@ with open(model_fname, 'rb') as f:
     model = pickle.load(f)
 
 # Load the training data from data/train.csv
-X, y = TrainData()
+X, y = TrainData("./data")
 
 # Print the result of kfold cross validation
 print ScoreModel(model, X, y)
