@@ -15,4 +15,13 @@ with open(model_fname, 'rb') as f:
 X, y = TrainData("./data")
 
 # Print the result of kfold cross validation
-print ScoreModel(model, X, y)
+score, err = ScoreModel(model, X, y)
+
+# Now compute the predicted result with the test data
+model.fit(X, y)
+X_test = TestData("./data")
+y_test = model.predict(X_test)
+df = pd.DataFrame(dict(ImageID=range(1,len(y_test)+1), Label=y_test))
+
+# Save the predictions for submission
+df.to_csv("{:.5f}_svm_rbf.csv".format(score), ',', index=False)
